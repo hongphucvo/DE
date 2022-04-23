@@ -17,10 +17,12 @@ def readDictionary():
         json_object = json.load(f)
         
         dictionary[str(path.split(".")[0])] = json_object[str(path.split(".")[0])]
+        
+        f.close()
     
     return dictionary
 
-def normalize(doc: string):
+def normalize(doc):
     quotes = ['.', ',', '-', '\'', '\"', '?']
     escape_seq = ['\n', '\t', '\r']
     
@@ -50,7 +52,7 @@ def create_dictionary(docs):
     
     return result
 
-def map_1(dataSet: list):
+def map_1(dataSet):
     dataRemovedQuote = list(map(lambda x: normalize(x), dataSet))
     
     dataSplit = list(map(lambda x: split_doc(x), dataRemovedQuote))
@@ -59,7 +61,7 @@ def map_1(dataSet: list):
     
     return dictionary
 
-def map_2(query: string):
+def map_2(query):
     dict_query = map_1([query])
     dict_search = {"Dq": dict_query["D0"]}
     

@@ -1,7 +1,7 @@
 from collections import defaultdict
-import string, json, os
+import json, os
 
-def normalize(doc: string):
+def normalize(doc):
     quotes = ['.', ',', '-', '\'', '\"', '?']
     escape_seq = ['\n', '\t', '\r']
     
@@ -31,7 +31,7 @@ def create_dictionary(docs):
     
     return result
     
-def map_1(dataSet: list):
+def map_1(dataSet):
     dataRemovedQuote = list(map(lambda x: normalize(x), dataSet))
     
     dataSplit = list(map(lambda x: split_doc(x), dataRemovedQuote))
@@ -56,5 +56,27 @@ def writeFile(dictionary):
         
         file.write(json_object)
         file.close()
+        
+def readFile():
+    dataSet = []
+    dir_path = "./collection"
+    
+    numFiles = 0
+    
+    for path in os.listdir(dir_path):
+        # check if current path is a file
+        if os.path.isfile(os.path.join(dir_path, path)):
+            numFiles += 1
+        
+    for path in os.listdir(dir_path):
+        f = open(dir_path + "/" + path)
+        data = f.read()
+        dataSet.append(data)
+        f.close()
+    
+    return dataSet
 
+dataSet = readFile()
+result = map_1(dataSet)
+print(result)
     
