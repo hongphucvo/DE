@@ -1,1 +1,0 @@
-ion or developer, you quickly start finding faults, “this isn’t needed”, “this could have been done better”, “why did they do this? its pointless”, and then starts the “I can do this better”. So you spend the next few days, weeks, even months re-engineering the code, then you hit your first wall, and you have to make some adjustments, then your second, the
