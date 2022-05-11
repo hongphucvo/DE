@@ -23,7 +23,7 @@ for line in sys.stdin:
         if current_doc:
             val = sum(w[1]for w in cur)
             for word_tf in cur:
-                print ('%s@%f\t%s#%f' % (current_doc,val, word_tf[0],word_tf[1]))
+                print ('%s@%f#%s\t%f' % (current_doc,val, word_tf[0],word_tf[1]))
             # print('%s\t%s' % (current_doc, cur))
         current_doc = doc
         cur = [(word, tf)]
@@ -31,4 +31,4 @@ for line in sys.stdin:
 if current_doc == doc:
     val = sum(w[1]for w in cur)
     for word_tf in cur:
-        print ('%s@%f\t%s#%f' % (current_doc,val, word_tf[0],word_tf[1]))
+        print ('%s@%f#%s\t%f' % (current_doc,val, word_tf[0],word_tf[1]))

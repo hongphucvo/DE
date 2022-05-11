@@ -33,7 +33,7 @@ for line in sys.stdin:
         for idx2 in range (doc+1, len(docs)):
             if len(docs) > idx2:
                 m=min(idx[1],docs[idx2][1])
-                if m>0.:#&&(idx[0][0:4]=='0.txt'||docs[idx2][0][0:4]=='0.txt')
-                    print('%s#%s\t%f' % (idx[0], docs[idx2][0], m))
+                # if m>0.:#&&(idx[0][0:4]=='0.txt'||docs[idx2][0][0:4]=='0.txt')
+                print('%s#%s\t%f' % (idx[0], docs[idx2][0], m))
 
 

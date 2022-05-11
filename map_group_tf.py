@@ -7,8 +7,8 @@ import sys
 for line in sys.stdin:
 	# remove leading and trailing whitespace
 	line = line.strip()
-	doc, word = line.split('\t', 1)
-	word, tf = word.split('#', 1)
+	doc, word = line.split('#', 1)
+	word, tf = word.split('\t', 1)
 # convert count (currently a string) to int
 	try:
 		tf = float(tf)

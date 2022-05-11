@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from math import log
+from math import log10
 import sys
 
 current_word = None
@@ -33,17 +33,17 @@ for line in sys.stdin:
     else:
         # tf calculating
         if current_word:
-            val = log(float(size)/(len(cur)))
+            val = log10(float(size)/(len(cur)))
             cur = sorted(map(lambda doctf: (
                 doctf[0], doctf[1]*val), cur))
             for doctf in cur:
-                print ('%s\t%s#%f' % (current_word, doctf[0],doctf[1]))
+                print ('%s#%s\t%f' % (current_word, doctf[0],doctf[1]))
         current_word = word
         cur = [(doc, freq)]
 # do not forget to output the last word if needed!
 if current_word == word:
-    val = log(float(size)/len(cur))
+    val = log10(float(size)/len(cur))
     cur = sorted(map(lambda doctf: (
         doctf[0], doctf[1]*val), cur))
     for doctf in cur:
-        print ('%s\t%s#%f' % (current_word,doctf[0], doctf[1]))
+        print ('%s#%s\t%f' % (current_word,doctf[0], doctf[1]))

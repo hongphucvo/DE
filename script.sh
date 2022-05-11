@@ -47,7 +47,7 @@ mapred streaming  \
 -mapper m1.py \
 -file /Users/hongphucvo/Desktop/hadoop_test/m1.py \
 -reducer r1.py \
--file /Users/hongphucvo/Desktop/hadoop_test/r1.py|\
+-file /Users/hongphucvo/Desktop/hadoop_test/r1.py   |\
 
 
 bin/hdfs dfs -rm -r -f st2 && 
@@ -57,7 +57,7 @@ mapred streaming  \
 -mapper m2.py \
 -file /Users/hongphucvo/Desktop/hadoop_test/m2.py \
 -reducer r2.py \
--file /Users/hongphucvo/Desktop/hadoop_test/r2.py |\
+-file /Users/hongphucvo/Desktop/hadoop_test/r2.py   |\
 
 
 bin/hdfs dfs -rm -r -f st3 && 

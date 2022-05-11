@@ -2,10 +2,10 @@
 
 import sys
 
-current_doc = None
+current_docs = None
 # read the entire line from STDIN
 curr = 0. 
-doc = None
+docs = None
 total_tf1=0.
 
 # docfile = open(
@@ -13,29 +13,31 @@ total_tf1=0.
 
 
 for line in sys.stdin:
-	doc, idf = line.split('\t', 1)
-	doc, total_tf1 = doc.split('@', 1)
-	
+	docs, idf = line.split('\t', 1)
 	try:
 		idf = float(idf)
-		total_tf1 = float(total_tf1)
 	except ValueError:
 		# count was not a number, so silently
 		# ignore/discard this line
 		continue
-	if current_doc == doc:
+	if current_docs == docs:
 		curr += idf
 	else:
-		if current_doc:
+		if current_docs:
 			# if curr[0]/curr[1] < 0.2: TODO
 			# if curr>0.:
+
+			doc, total_tf1 = current_docs.split('@', 1)
+			total_tf1 = float(total_tf1)
 			print('%s\t%f' %
-				(current_doc, curr))
-		current_doc = doc
+				(doc, curr/total_tf1*100))
+		current_docs = docs
 		curr = idf
 
-if current_doc == doc:
+if current_docs == docs:
 	# if curr>0.:
+	doc, total_tf1 = current_docs.split('@', 1)
+	total_tf1 = float(total_tf1)
 	print('%s\t%f' %
-		(current_doc, curr))
+				(doc, curr/total_tf1*100))
 #high is gud
